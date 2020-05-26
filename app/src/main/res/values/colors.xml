@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBottomUnchecked">#CDCDCD</color>
+    <color name="colorInput">#59828282</color>
+    <color name="colorBtnTitle">#FFFFFF</color>
+    <color name="colorBase">#73000000</color>
+    <color name="colorText">#F8FFFFFF</color>
+    <color name="colorBackgroundDark">#D2000000</color>
+    <color name="colorBackgroundLight">#A1000000</color>
+    <color name="colorChart">#30FFA200</color>
+    <color name="colorGold">#FF8000</color>
+    <color name="colorSilver">#6FFF00</color>
+    <color name="colorBronze">#009DFF</color>
+    <color name="colorTabbar">#A0000000</color>
+    <color name="colorPrimaryFade">#A0FFA200</color>
+</resources>

@@ -1,14 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Fragments.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.HomeFragment.HomeFragment"
+    android:id="@+id/home_layout">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/home_scroll"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/home_nested"
 
-</FrameLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/colorBackgroundLight"
+            android:scrollbars="none">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:descendantFocusability="blocksDescendants"
+                android:paddingBottom="?actionBarSize">
+                <ImageView
+                    android:id="@+id/home_btn_search"
+
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    android:src="@drawable/ic_search"
+                    android:visibility="gone" />
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/home_viewPager"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintTop_toBottomOf="@+id/home_btn_search"
+
+                    android:paddingTop="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+                <TextView
+                    android:id="@+id/home_txt_recent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/home_viewPager"
+
+                    android:layout_margin="8dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/home_recent"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_recycler_recent"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/home_txt_recent"
+
+                    android:nestedScrollingEnabled="false"/>
+                <ImageView
+                    android:id="@+id/home_img_more_recent"
+
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/home_recycler_recent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    android:visibility="gone"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_arrow_down"/>
+                <TextView
+                    android:id="@+id/home_txt_best"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/home_img_more_recent"
+
+                    android:layout_margin="8dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/home_best"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_recycler_best"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/home_txt_best"
+
+                    android:nestedScrollingEnabled="false"/>
+                <ImageView
+                    android:id="@+id/home_img_more_best"
+
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/home_recycler_best"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    android:visibility="gone"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_arrow_down"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

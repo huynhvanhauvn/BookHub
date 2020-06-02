@@ -11,9 +11,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.hhub.bookhub.Activities.Fragments.HomeFragment;
-import com.hhub.bookhub.Activities.Fragments.ProfileFragment;
-import com.hhub.bookhub.Activities.Fragments.TrendFragment;
+import com.hhub.bookhub.Fragments.HomeFragment.HomeFragment;
+import com.hhub.bookhub.Fragments.ProfileFragment;
+import com.hhub.bookhub.Fragments.TrendFragment;
 import com.hhub.bookhub.Adapters.ViewPagerAdapter;
 import com.hhub.bookhub.R;
 import com.hhub.bookhub.Utils.NetworkStateReceiver;

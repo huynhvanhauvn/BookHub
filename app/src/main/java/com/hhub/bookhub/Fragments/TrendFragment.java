@@ -1,4 +1,4 @@
-package com.hhub.bookhub.Activities.Fragments;
+package com.hhub.bookhub.Fragments;
 
 import android.os.Bundle;
 

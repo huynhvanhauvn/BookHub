@@ -21,9 +21,8 @@
     <string name="detail_voted">You voted this movie</string>
     <string name="review_opening">Introduction</string>
     <string name="review_story">Story</string>
-    <string name="review_act">Acting</string>
-    <string name="review_picture">Cinema picture</string>
-    <string name="review_sound">Sound</string>
+    <string name="review_character">Character</string>
+    <string name="review_art">Language Arts</string>
     <string name="review_feeling">Feeling</string>
     <string name="review_message">Message</string>
     <string name="review_conclude">Conclude</string>

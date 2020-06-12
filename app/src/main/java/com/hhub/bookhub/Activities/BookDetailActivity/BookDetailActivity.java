@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.hhub.bookhub.Activities.AuthorActivity.AuthorActivity;
 import com.hhub.bookhub.Activities.ReviewActivity.ReviewActivity;
 import com.hhub.bookhub.Activities.WelcomeActivity.WelcomeActivity;
 import com.hhub.bookhub.Adapters.AuthorAdapter;
@@ -170,9 +171,9 @@ public class BookDetailActivity extends AppCompatActivity implements BookDetailV
         adapter.setOnItemClickListener(new AuthorAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, int position) {
-//                Intent intent = new Intent(BookDetailActivity.this, ArtistActivity.class);
-//                intent.putExtra(ArtistActivity.ID,adapter.getArtists().get(position).getId());
-//                startActivity(intent);
+                Intent intent = new Intent(BookDetailActivity.this, AuthorActivity.class);
+                intent.putExtra(AuthorActivity.ID,adapter.getArtists().get(position).getId());
+                startActivity(intent);
             }
         });
     }

@@ -1,14 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.TrendFragment.TrendFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.TrendFragment.TrendFragment"
+    android:id="@+id/trend_layout">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/trend_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+        android:background="@color/colorBackgroundLight">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/trend_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:descendantFocusability="blocksDescendants"
+                android:paddingBottom="?actionBarSize">
+                <ImageView
+                    android:id="@+id/trend_btn_search"
+
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    android:src="@drawable/ic_search"
+                    android:visibility="gone" />
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/trend_chart"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_btn_search"
+
+                    android:background="@drawable/bg_chart"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/trend_card1"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_chart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/trend_card2"
+
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:cardCornerRadius="30dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/trend_img1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:src="@color/colorGold"
+                            app:riv_corner_radius_top_left="30dp"
+                            app:riv_corner_radius_bottom_right="30dp" />
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="30sp"
+                            android:textColor="@android:color/white"
+                            android:text="1"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/trend_card2"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_chart"
+                    app:layout_constraintLeft_toRightOf="@+id/trend_card1"
+                    app:layout_constraintRight_toLeftOf="@+id/trend_card3"
+
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    app:cardCornerRadius="30dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/trend_img2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:src="@color/colorSilver"
+                            app:riv_corner_radius_top_left="30dp"
+                            app:riv_corner_radius_bottom_right="30dp" />
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="30sp"
+                            android:textColor="@android:color/white"
+                            android:text="2"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/trend_card3"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_chart"
+                    app:layout_constraintLeft_toRightOf="@+id/trend_card2"
+                    app:layout_constraintRight_toRightOf="parent"
+
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="8dp"
+                    app:cardCornerRadius="30dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/trend_img3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:src="@color/colorBronze"
+                            app:riv_corner_radius_top_left="30dp"
+                            app:riv_corner_radius_bottom_right="30dp" />
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="30sp"
+                            android:textColor="@android:color/white"
+                            android:text="3"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trend_recycler_trend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@id/trend_card1"
+
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginVertical="8dp" />
+                <TextView
+                    android:id="@+id/trend_txt_hot_cast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_recycler_trend"
+                    app:layout_constraintLeft_toLeftOf="parent"
+
+                    android:textSize="20sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:text="@string/trend_hot_cast"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trend_recycler_hot_cast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@id/trend_txt_hot_cast"
+
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/trend_txt_hot_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@+id/trend_recycler_hot_cast"
+                    app:layout_constraintLeft_toLeftOf="parent"
+
+                    android:textSize="20sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:text="@string/trend_hot_review"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trend_recycler_hot_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:layout_constraintTop_toBottomOf="@id/trend_txt_hot_review"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    android:layout_marginHorizontal="8dp"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="8dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

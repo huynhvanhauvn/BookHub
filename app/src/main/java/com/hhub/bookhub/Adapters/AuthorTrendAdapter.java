@@ -11,18 +11,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.hhub.bookhub.Models.Author;
+import com.hhub.bookhub.Models.AuthorTrend;
 import com.hhub.bookhub.R;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
-public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.RecyclerViewHolder> {
+public class AuthorTrendAdapter extends RecyclerView.Adapter<AuthorTrendAdapter.RecyclerViewHolder> {
 
     private Context context;
-    private ArrayList<Author> authors;
+    private ArrayList<AuthorTrend> authors;
 
-    public AuthorAdapter(Context context, ArrayList<Author> authors) {
+    public AuthorTrendAdapter(Context context, ArrayList<AuthorTrend> authors) {
         this.context = context;
         this.authors = authors;
     }
@@ -30,13 +30,29 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.RecyclerVi
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_author,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.
+                item_author_trend,parent,false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position) {
-        Author author = authors.get(position);
+        AuthorTrend author = authors.get(position);
+        holder.txtNo.setText((position+1)+"");
+        holder.txtNo.setVisibility(View.VISIBLE);
+        switch (position) {
+            case 0:
+                holder.txtNo.setTextColor(context.getResources().getColor(R.color.colorGold));
+                break;
+            case 1:
+                holder.txtNo.setTextColor(context.getResources().getColor(R.color.colorSilver));
+                break;
+            case 2:
+                holder.txtNo.setTextColor(context.getResources().getColor(R.color.colorBronze));
+                break;
+            default:
+                break;
+        }
         Glide.with(context).load(author.getImage()).centerCrop().into(holder.imgAvatar);
         holder.txtName.setText(author.getName());
         holder.line.setOnClickListener(new View.OnClickListener() {
@@ -57,18 +73,19 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.RecyclerVi
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         private RoundedImageView imgAvatar;
-        private TextView txtName;
+        private TextView txtName, txtNo;
         private ConstraintLayout line;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             imgAvatar = (RoundedImageView) itemView.findViewById(R.id.artist_avatar);
             txtName = (TextView) itemView.findViewById(R.id.artist_txt_name);
+            txtNo = (TextView) itemView.findViewById(R.id.artist_txt_no);
             line = (ConstraintLayout) itemView.findViewById(R.id.iartist_line);
         }
     }
 
-    public ArrayList<Author> getArtists() {
+    public ArrayList<AuthorTrend> getAuthors() {
         return authors;
     }
 

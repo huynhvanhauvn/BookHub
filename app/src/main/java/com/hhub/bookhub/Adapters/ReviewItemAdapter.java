@@ -11,34 +11,34 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.hhub.bookhub.Models.Author;
+import com.hhub.bookhub.Models.Quote;
 import com.hhub.bookhub.R;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
-public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.RecyclerViewHolder> {
+public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.RecyclerViewHolder> {
 
     private Context context;
-    private ArrayList<Author> authors;
+    private ArrayList<Quote> quotes;
 
-    public AuthorAdapter(Context context, ArrayList<Author> authors) {
+    public ReviewItemAdapter(Context context, ArrayList<Quote> quotes) {
         this.context = context;
-        this.authors = authors;
+        this.quotes = quotes;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_author,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_review_row,parent,false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position) {
-        Author author = authors.get(position);
-        Glide.with(context).load(author.getImage()).centerCrop().into(holder.imgAvatar);
-        holder.txtName.setText(author.getName());
+        Quote quote = quotes.get(position);
+        holder.txtTitle.setText(quote.getTitle());
+        Glide.with(context).load(quote.getCover()).centerCrop().into(holder.img);
         holder.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,28 +48,25 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.RecyclerVi
                 }
             }
         });
+        holder.txtAuthor.setText(quote.getAuthor());
     }
 
     @Override
     public int getItemCount() {
-        return authors.size();
+        return quotes.size();
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        private RoundedImageView imgAvatar;
-        private TextView txtName;
+        private RoundedImageView img;
+        private TextView txtTitle, txtAuthor;
         private ConstraintLayout line;
-
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgAvatar = (RoundedImageView) itemView.findViewById(R.id.artist_avatar);
-            txtName = (TextView) itemView.findViewById(R.id.artist_txt_name);
-            line = (ConstraintLayout) itemView.findViewById(R.id.iartist_line);
+            img = (RoundedImageView) itemView.findViewById(R.id.ireview_img_poster);
+            txtTitle = (TextView) itemView.findViewById(R.id.ireview_txt_title);
+            txtAuthor = (TextView) itemView.findViewById(R.id.ireview_txt_author);
+            line = (ConstraintLayout) itemView.findViewById(R.id.ireview_line);
         }
-    }
-
-    public ArrayList<Author> getArtists() {
-        return authors;
     }
 
     public interface OnItemClickListener{

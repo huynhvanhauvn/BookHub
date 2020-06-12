@@ -1,8 +1,11 @@
 package com.hhub.bookhub.Services;
 
 import com.hhub.bookhub.Models.Author;
+import com.hhub.bookhub.Models.AuthorTrend;
 import com.hhub.bookhub.Models.Background;
 import com.hhub.bookhub.Models.Book;
+import com.hhub.bookhub.Models.BookTrend;
+import com.hhub.bookhub.Models.DateView;
 import com.hhub.bookhub.Models.Promotion;
 import com.hhub.bookhub.Models.Quote;
 import com.hhub.bookhub.Models.Review;
@@ -93,4 +96,29 @@ public interface Service {
     @FormUrlEncoded
     @POST("quote.php")
     Observable<ArrayList<Quote>> getQuote(@Field("idBook") String idBook);
+
+    @FormUrlEncoded
+    @POST("authorname.php")
+    Observable<ArrayList<String>> authorName(@Field("id") String id);
+
+    @GET("booktrend.php")
+    Observable<ArrayList<BookTrend>> bookTrend();
+
+    @FormUrlEncoded
+    @POST("dateviewbook.php")
+    Observable<ArrayList<DateView>> getDateView(@Field("idBook") String idBook);
+
+    @GET("authortrend.php")
+    Observable<ArrayList<AuthorTrend>> hotAuthor();
+
+    @GET("reviewtrend.php")
+    Observable<ArrayList<Quote>> hotReview();
+
+    @FormUrlEncoded
+    @POST("authordetail.php")
+    Observable<Author> authorDetail(@Field("id") String id, @Field("language") String language);
+
+    @FormUrlEncoded
+    @POST("authorlistbook.php")
+    Observable<ArrayList<Book>> authorbook(@Field("id") String id);
 }

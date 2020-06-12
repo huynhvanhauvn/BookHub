@@ -3,7 +3,7 @@ package com.hhub.bookhub.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Book {
+public class BookTrend {
 
     @SerializedName("id")
     @Expose
@@ -11,27 +11,18 @@ public class Book {
     @SerializedName("title")
     @Expose
     private String title;
-    @SerializedName("description")
-    @Expose
-    private String description;
     @SerializedName("rating")
     @Expose
     private String rating;
     @SerializedName("vote")
     @Expose
     private String vote;
-    @SerializedName("view")
-    @Expose
-    private String view;
     @SerializedName("cover")
     @Expose
     private String cover;
-    @SerializedName("nation")
+    @SerializedName("trend")
     @Expose
-    private String nation;
-    @SerializedName("date")
-    @Expose
-    private String date;
+    private String trend;
 
     public String getId() {
         return id;
@@ -47,14 +38,6 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getRating() {
@@ -81,27 +64,11 @@ public class Book {
         this.cover = cover;
     }
 
-    public String getNation() {
-        return nation;
+    public String getTrend() {
+        return trend;
     }
 
-    public void setNation(String nation) {
-        this.nation = nation;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getView() {
-        return view;
-    }
-
-    public void setView(String view) {
-        this.view = view;
+    public void setTrend(String trend) {
+        this.trend = trend;
     }
 }

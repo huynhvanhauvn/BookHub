@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBase"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="8dp"
+    android:id="@+id/item_review_line">
+    <ImageView
+        android:id="@+id/item_review_quote_open"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_quote_open"/>
+    <TextView
+        android:id="@+id/item_txt_review"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/item_review_quote_open"
+        app:layout_constraintRight_toLeftOf="@+id/item_review_quote_close"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:textColor="@color/colorText"
+        android:justificationMode="inter_word"
+        android:textSize="17dp"
+        android:padding="8dp"
+        android:maxLines="5"
+        android:text=""/>
+    <TextView
+        android:id="@+id/item_txt_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/item_txt_review"
+        app:layout_constraintRight_toLeftOf="@+id/item_review_quote_close"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:lines="1"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorText"/>
+    <ImageView
+        android:id="@+id/item_review_quote_close"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_quote_close"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

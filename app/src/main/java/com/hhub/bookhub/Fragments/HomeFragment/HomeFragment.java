@@ -30,6 +30,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.hhub.bookhub.Activities.BookDetailActivity.BookDetailActivity;
+import com.hhub.bookhub.Activities.BookListActivity.BookListActivity;
+import com.hhub.bookhub.Adapters.RecentAdapter;
 import com.hhub.bookhub.Adapters.SlideAdapter;
 import com.hhub.bookhub.Models.Background;
 import com.hhub.bookhub.Models.Book;
@@ -48,7 +50,7 @@ public class HomeFragment extends Fragment implements HomeView, NetworkStateRece
     private RecyclerView recyclerView, recyclerBest;
     private ConstraintLayout imgLayout;
     private HomePresenter presenter;
-    private ImageView imageView, btnMoreBest;
+    private ImageView btnMoreRecent, btnMoreBest;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView btnSearch;
     private NestedScrollView scrollView;
@@ -74,7 +76,7 @@ public class HomeFragment extends Fragment implements HomeView, NetworkStateRece
         recyclerView = (RecyclerView) view.findViewById(R.id.home_recycler_recent);
         recyclerBest = (RecyclerView) view.findViewById(R.id.home_recycler_best);
         imgLayout = (ConstraintLayout) view.findViewById(R.id.home_layout);
-        imageView = (ImageView) view.findViewById(R.id.home_img_more_recent);
+        btnMoreRecent = (ImageView) view.findViewById(R.id.home_img_more_recent);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_scroll);
         btnSearch = (ImageView) view.findViewById(R.id.home_btn_search);
         btnMoreBest = (ImageView) view.findViewById(R.id.home_img_more_best);
@@ -199,51 +201,51 @@ public class HomeFragment extends Fragment implements HomeView, NetworkStateRece
 
     @Override
     public void showRecentMovie(final ArrayList<Book> books) {
-//        RecentAdapter adapter = new RecentAdapter(getContext(),movies);
-//        recyclerView.setAdapter(adapter);
-//        adapter.setOnItemClickListener(new RecentAdapter.OnItemClickListener() {
-//            @Override
-//            public void OnItemClick(View view, int position) {
-//                Intent intent = new Intent(getContext(), MovieDetailActivity.class);
-//                intent.putExtra("id",movies.get(position).getId());
-//                startActivity(intent);
-//            }
-//        });
-//        imageView.setVisibility(View.VISIBLE);
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), MovieListActivity.class);
-//                intent.putExtra(MovieListActivity.TYPE,MovieListActivity.TYPE_RECENT);
-//                startActivity(intent);
-//            }
-//        });
+        RecentAdapter adapter = new RecentAdapter(getContext(),books);
+        recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new RecentAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Intent intent = new Intent(getContext(), BookDetailActivity.class);
+                intent.putExtra("id",books.get(position).getId());
+                startActivity(intent);
+            }
+        });
+        btnMoreRecent.setVisibility(View.VISIBLE);
+        btnMoreRecent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BookListActivity.class);
+                intent.putExtra(BookListActivity.TYPE,BookListActivity.TYPE_RECENT);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void showBestMovie(final ArrayList<Book> books) {
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerBest.setLayoutManager(layoutManager);
-//        RecentAdapter adapter = new RecentAdapter(getContext(),movies);
-//        recyclerBest.setAdapter(adapter);
-//        adapter.setOnItemClickListener(new RecentAdapter.OnItemClickListener() {
-//            @Override
-//            public void OnItemClick(View view, int position) {
-//                Intent intent = new Intent(getContext(), MovieDetailActivity.class);
-//                intent.putExtra("id",movies.get(position).getId());
-//                startActivity(intent);
-//            }
-//        });
-//        btnMoreBest.setVisibility(View.VISIBLE);
-//        btnMoreBest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), MovieListActivity.class);
-//                intent.putExtra(MovieListActivity.TYPE,MovieListActivity.TYPE_BEST);
-//                startActivity(intent);
-//            }
-//        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerBest.setLayoutManager(layoutManager);
+        RecentAdapter adapter = new RecentAdapter(getContext(),books);
+        recyclerBest.setAdapter(adapter);
+        adapter.setOnItemClickListener(new RecentAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Intent intent = new Intent(getContext(), BookDetailActivity.class);
+                intent.putExtra("id",books.get(position).getId());
+                startActivity(intent);
+            }
+        });
+        btnMoreBest.setVisibility(View.VISIBLE);
+        btnMoreBest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BookListActivity.class);
+                intent.putExtra(BookListActivity.TYPE, BookListActivity.TYPE_BEST);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.hhub.bookhub.Fragments.HomeFragment;
 
+import com.hhub.bookhub.Models.Background;
+import com.hhub.bookhub.Models.Book;
 import com.hhub.bookhub.Models.Promotion;
 import com.hhub.bookhub.Services.APIService;
 import com.hhub.bookhub.Services.Service;
@@ -47,16 +49,73 @@ public class HomePresenter implements HomeInterface {
 
     @Override
     public void showBackground(String language) {
+        Observable<Background> backgroundObservable = service.background("home",language);
+        backgroundObservable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Background>() {
+                    @Override
+                    public void onCompleted() {
 
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Background background) {
+                        if(background != null) {
+                            homeView.showBackground(background);
+                        }
+                    }
+                });
     }
 
     @Override
     public void showRecentMovie() {
+        Observable<ArrayList<Book>> recentObservable = service.recentBook();
+        recentObservable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ArrayList<Book>>() {
+                    @Override
+                    public void onCompleted() {
 
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ArrayList<Book> books) {
+                        if(books != null) {
+                            homeView.showRecentMovie(books);
+                        }
+                    }
+                });
     }
 
     @Override
     public void getBestMovie() {
+        Observable<ArrayList<Book>> observable = service.bestBook();
+        observable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ArrayList<Book>>() {
+                    @Override
+                    public void onCompleted() {
 
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ArrayList<Book> books) {
+                        if(books != null) {
+                            homeView.showBestMovie(books);
+                        }
+                    }
+                });
     }
 }

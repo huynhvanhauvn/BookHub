@@ -121,4 +121,16 @@ public interface Service {
     @FormUrlEncoded
     @POST("authorlistbook.php")
     Observable<ArrayList<Book>> authorbook(@Field("id") String id);
+
+    @GET("recentbook.php")
+    Observable<ArrayList<Book>> recentBook();
+
+    @GET("bookbest.php")
+    Observable<ArrayList<Book>> bestBook();
+
+    @GET("recentbooklist.php")
+    Observable<ArrayList<Book>> recentBookList();
+
+    @GET("bookbestlist.php")
+    Observable<ArrayList<Book>> bestBookList();
 }

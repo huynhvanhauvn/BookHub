@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="157dp"
-        android:background="@drawable/bg_title"
+        android:background="@drawable/bg_promotion_title"
         android:elevation="30dp">
         <TextView
             android:id="@+id/item_slide_txt"
